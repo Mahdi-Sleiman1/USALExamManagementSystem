@@ -1,0 +1,28 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Exams.IndexModel
+
+<h2>Exams</h2>
+
+<a asp-page="/Exams/Create" class="btn btn-primary mb-3">
+    Create New Exam
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Course</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var exam in Model.Exams)
+        {
+            <tr>
+                <td>@exam.ExamTitle</td>
+                <td>@exam.ExamDate</td>
+                <td>@exam.Course.CourseName</td>
+            </tr>
+        }
+    </tbody>
+</table>
