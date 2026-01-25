@@ -1,0 +1,17 @@
+﻿@page "{id:int}"
+@model USALExamManagementSystem.Web.Pages.Exams.DeleteModel
+@{
+    ViewData["Title"] = "Delete Exam";
+}
+
+<h2 class="text-danger">Delete Exam</h2>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete <strong>@Model.Exam.ExamTitle</strong>?
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Exam.ExamId" />
+    <button class="btn btn-danger">Yes, Delete</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

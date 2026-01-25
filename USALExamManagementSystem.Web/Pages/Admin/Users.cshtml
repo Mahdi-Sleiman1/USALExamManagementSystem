@@ -1,0 +1,51 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Admin.UsersModel
+@{
+    ViewData["Title"] = "User Management";
+}
+
+<h2>User Management</h2>
+
+<table class="table table-bordered align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Major (Student / Doctor)</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var u in Model.IdentityUsers)
+        {
+            <tr>
+                <form method="post">
+                <td>@u.Email</td>
+
+                <td>
+                    <input type="hidden" name="UserId" value="@u.Id" />
+                    <select name="RoleId" class="form-control">
+                        <option value="3">Student</option>
+                        <option value="2">Doctor</option>
+                        <option value="1">Admin</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select name="MajorId" class="form-control">
+                        <option value="">-- Select Major --</option>
+                        @foreach (var m in Model.Majors)
+                        {
+                            <option value="@m.MajorId">@m.MajorName</option>
+                        }
+                    </select>
+                </td>
+
+                <td>
+                    <button class="btn btn-success btn-sm">Save</button>
+                </td>
+                </form>
+            </tr>
+        }
+    </tbody>
+</table>

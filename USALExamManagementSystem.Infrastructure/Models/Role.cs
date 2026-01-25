@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using USALExamManagementSystem.Infrastructure.Models;
 
-namespace USALExamManagementSystem.Infrastructure.Models;
-
-public partial class Role
+public class Role
 {
     public int RoleId { get; set; }
-
     public string RoleName { get; set; } = null!;
 
-    public virtual ICollection<User> Users { get; set; } = new List<User>();
+    // ✅ ADD THIS
+    public ICollection<User> Users { get; set; } = new List<User>();
 }

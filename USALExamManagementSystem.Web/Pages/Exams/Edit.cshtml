@@ -1,0 +1,41 @@
+﻿@page "{id:int}"
+@model USALExamManagementSystem.Web.Pages.Exams.EditModel
+@{
+    ViewData["Title"] = "Edit Exam";
+}
+
+<h2>Edit Exam</h2>
+
+<form method="post" enctype="multipart/form-data">
+
+    <input type="hidden" asp-for="Exam.ExamId" />
+
+    <div class="mb-3">
+        <label asp-for="Exam.ExamTitle"></label>
+        <input asp-for="Exam.ExamTitle" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Exam.ExamDate"></label>
+        <input asp-for="Exam.ExamDate" type="date" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Course</label>
+        <select asp-for="Exam.CourseId" class="form-control">
+            @foreach (var c in Model.Courses)
+            {
+                <option value="@c.CourseId">@c.CourseName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Replace File (optional)</label>
+        <input type="file" asp-for="UploadFile" class="form-control" />
+    </div>
+
+    <button class="btn btn-warning">Save Changes</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+
+</form>

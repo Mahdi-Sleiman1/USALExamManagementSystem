@@ -1,0 +1,12 @@
+﻿@page "{id:int}"
+@model USALExamManagementSystem.Web.Pages.Admin.Courses.DeleteModel
+
+<h3 class="text-danger">Delete Course</h3>
+
+<p>Are you sure you want to delete <strong>@Model.Course.CourseName</strong>?</p>
+
+<form method="post">
+    <input type="hidden" asp-for="Course.CourseId" />
+    <button class="btn btn-danger">Delete</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

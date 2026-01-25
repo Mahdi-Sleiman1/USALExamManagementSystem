@@ -1,0 +1,63 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Admin.DashboardModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+    
+}
+
+
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Doctors</h5>
+                <h2>@Model.Doctors</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Students</h5>
+                <h2>@Model.Students</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Majors</h5>
+                <h2>@Model.Majors</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Courses</h5>
+                <h2>@Model.Courses</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Exams</h5>
+                <h2>@Model.Exams</h2>
+            </div>
+        </div>
+    </div>
+
+</div>

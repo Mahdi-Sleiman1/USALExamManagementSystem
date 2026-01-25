@@ -1,0 +1,54 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Student.IndexModel
+@{
+    
+}
+
+<h2 class="mb-4">Student Dashboard</h2>
+
+<div class="row g-4">
+
+    <!-- Exams Card -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">📄 My Exams</h5>
+                <p class="card-text text-muted">
+                    View all exams related to your major.
+                </p>
+                <a asp-page="/Exams/Index" class="btn btn-primary">
+                    View Exams
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Files Card -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">📎 Exam Files</h5>
+                <p class="card-text text-muted">
+                    Download documents and attachments.
+                </p>
+                <a asp-page="/Exams/Index" class="btn btn-outline-primary">
+                    Open Files
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Card -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">👤 My Profile</h5>
+                <p class="card-text text-muted">
+                    View your information and role.
+                </p>
+                <span class="badge bg-secondary">Student</span>
+            </div>
+        </div>
+    </div>
+
+</div>

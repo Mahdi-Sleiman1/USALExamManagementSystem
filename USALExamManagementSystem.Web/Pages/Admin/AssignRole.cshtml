@@ -1,0 +1,51 @@
+﻿
+@page
+@model USALExamManagementSystem.Web.Pages.Admin.AssignRoleModel
+
+@{
+    
+
+   
+    ViewData["Title"] = "Assign Role";
+}
+
+<h2>Assign Role</h2>
+
+<form method="post" class="mt-4">
+
+    <div class="mb-3">
+        <label class="form-label">User</label>
+        <select asp-for="UserId" class="form-control">
+            @foreach (var u in Model.IdentityUsers)
+            {
+                <option value="@u.Id">@u.Email</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Role</label>
+        <select asp-for="RoleId" class="form-control">
+            @foreach (var r in Model.Roles)
+            {
+                <option value="@r.RoleId">@r.RoleName</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Major (Doctors only)</label>
+        <select asp-for="MajorId" class="form-control">
+            <option value="">-- none --</option>
+            @foreach (var m in Model.Majors)
+            {
+                <option value="@m.MajorId">@m.MajorName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-primary">
+        Save
+    </button>
+
+</form>

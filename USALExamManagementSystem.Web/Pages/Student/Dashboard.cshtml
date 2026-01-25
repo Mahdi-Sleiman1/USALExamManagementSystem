@@ -1,0 +1,21 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Student.DashboardModel
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<h3 class="mb-4">Welcome</h3>
+
+<div class="row g-4">
+
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h5>My Exams</h5>
+                <p class="text-muted">View exams related to your major.</p>
+                <a asp-page="/Exams/Index" class="btn btn-success">Open</a>
+            </div>
+        </div>
+    </div>
+
+</div>

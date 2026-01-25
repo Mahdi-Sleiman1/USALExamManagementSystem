@@ -1,0 +1,24 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Admin.MajorsModel
+@{
+    
+    ViewData["Title"] = "Majors";
+}
+
+<h2>Majors</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Major Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var m in Model.Majors)
+        {
+            <tr>
+                <td>@m.MajorName</td>
+            </tr>
+        }
+    </tbody>
+</table>

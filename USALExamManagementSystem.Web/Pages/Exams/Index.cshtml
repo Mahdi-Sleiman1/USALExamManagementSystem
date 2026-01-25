@@ -1,27 +1,71 @@
 ﻿@page
 @model USALExamManagementSystem.Web.Pages.Exams.IndexModel
+@{
+    ViewData["Title"] = "Exams";
+}
 
-<h2>Exams</h2>
+<h2 class="mb-4">Exams</h2>
 
-<a asp-page="/Exams/Create" class="btn btn-primary mb-3">
-    Create New Exam
-</a>
+@if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
+{
+    <a asp-page="Create" class="btn btn-success mb-3">
+        + Create Exam
+    </a>
+}
 
-<table class="table table-bordered">
-    <thead>
+<table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
         <tr>
             <th>Title</th>
             <th>Date</th>
             <th>Course</th>
+            <th style="width:180px">Actions</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var exam in Model.Exams)
+        @if (Model.Exams.Any())
+        {
+            foreach (var exam in Model.Exams)
+            {
+                <tr>
+                    <td>
+                        <a asp-page="Details" asp-route-id="@exam.ExamId">
+                            @exam.ExamTitle
+                        </a>
+                    </td>
+                    <td>@exam.ExamDate.ToString("yyyy-MM-dd")</td>
+                    <td>@exam.Course.CourseName</td>
+                    <td>
+                        <a asp-page="Details"
+                           asp-route-id="@exam.ExamId"
+                           class="btn btn-sm btn-outline-primary">
+                            View
+                        </a>
+
+                        @if (User.IsInRole("Admin") || User.IsInRole("Doctor"))
+                        {
+                            <a asp-page="Edit"
+                               asp-route-id="@exam.ExamId"
+                               class="btn btn-sm btn-outline-warning">
+                                Edit
+                            </a>
+
+                            <a asp-page="Delete"
+                               asp-route-id="@exam.ExamId"
+                               class="btn btn-sm btn-outline-danger">
+                                Delete
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+        else
         {
             <tr>
-                <td>@exam.ExamTitle</td>
-                <td>@exam.ExamDate</td>
-                <td>@exam.Course.CourseName</td>
+                <td colspan="4" class="text-center text-muted">
+                    No exams available.
+                </td>
             </tr>
         }
     </tbody>

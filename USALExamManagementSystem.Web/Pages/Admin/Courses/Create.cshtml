@@ -1,0 +1,24 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Admin.Courses.CreateModel
+
+<h2>Add Course</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Course Name</label>
+        <input asp-for="Course.CourseName" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label>Major</label>
+        <select asp-for="Course.MajorId" class="form-control">
+            @foreach (var m in Model.Majors)
+            {
+                <option value="@m.MajorId">@m.MajorName</option>
+            }
+        </select>
+    </div>
+
+    <button class="btn btn-success">Save</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancel</a>
+</form>

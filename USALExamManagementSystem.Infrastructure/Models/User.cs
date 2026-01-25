@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using USALExamManagementSystem.Infrastructure.Models;
 
-namespace USALExamManagementSystem.Infrastructure.Models;
-
-public partial class User
+public class User
 {
-    public int UserId { get; set; }
-
+    public string UserId { get; set; } = null!;
+    public string Email { get; set; } = null!;
     public string FullName { get; set; } = null!;
 
-    public string Email { get; set; } = null!;
+    public int RoleId { get; set; }      // 1=Admin, 2=Doctor, 3=Student
+    public int? MajorId { get; set; }    // 🔑 STUDENT MAJOR
 
-    public int RoleId { get; set; }
-
-    public virtual Role Role { get; set; } = null!;
+    public Role Role { get; set; } = null!;
+    public Major? Major { get; set; }
 }

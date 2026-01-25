@@ -1,0 +1,29 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Admin.Courses.IndexModel
+
+<h2>Courses</h2>
+
+<a asp-page="Create" class="btn btn-success mb-3">+ Add Course</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Course</th>
+            <th>Major</th>
+            <th style="width:180px">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.Courses)
+        {
+            <tr>
+                <td>@c.CourseName</td>
+                <td>@c.Major.MajorName</td>
+                <td>
+                    <a asp-page="Edit" asp-route-id="@c.CourseId" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-page="Delete" asp-route-id="@c.CourseId" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

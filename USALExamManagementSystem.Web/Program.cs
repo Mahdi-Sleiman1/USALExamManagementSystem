@@ -6,6 +6,7 @@ using USALExamManagementSystem.Web.Data;
 using USALExamManagementSystem.Web.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // =======================
@@ -52,6 +53,28 @@ using (var scope = app.Services.CreateScope())
     await RoleSeeder.SeedRolesAsync(services);
 }
 
+
+async Task SeedRolesAsync(IServiceProvider services)
+{
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+    string[] roles = { "Admin", "Doctor", "Student" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+}
+
+using (var scope = app.Services.CreateScope())
+{
+    await SeedRolesAsync(scope.ServiceProvider);
+}
+
+
 // =======================
 // MIDDLEWARE
 // =======================
@@ -64,7 +87,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 
+app.MapControllers();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();

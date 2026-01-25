@@ -1,44 +1,46 @@
 ﻿@page
-@model LoginModel
+@model USALExamManagementSystem.Web.Areas.Identity.Pages.Account.LoginModel
 @{
     ViewData["Title"] = "Login";
 }
 
-<h5 class="text-center mb-4">Sign in to your account</h5>
+<div class="auth-container">
+    <div class="auth-card">
+        <img src="~/images/usal-logo.png" class="auth-logo" />
 
-<form method="post">
+        <h4 class="text-center mb-3">USAL Portal Login</h4>
 
-    @Html.AntiForgeryToken()
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <div class="mb-3">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control auth-input" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
 
-    <div class="mb-3 text-start">
-        <label asp-for="Input.Email" class="form-label"></label>
-        <input asp-for="Input.Email" class="form-control" />
-        <span asp-validation-for="Input.Email" class="text-danger"></span>
+            <div class="mb-3">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control auth-input" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-check mb-3">
+                <input asp-for="Input.RememberMe" class="form-check-input" />
+                <label asp-for="Input.RememberMe" class="form-check-label">Remember me</label>
+            </div>
+
+            <button type="submit" class="btn auth-btn w-100 text-white">
+                Login
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-page="./ForgotPassword">Forgot password?</a><br />
+            <a asp-page="./Register">New student? Create account</a>
+        </div>
     </div>
-
-    <div class="mb-3 text-start">
-        <label asp-for="Input.Password" class="form-label"></label>
-        <input asp-for="Input.Password" class="form-control" />
-        <span asp-validation-for="Input.Password" class="text-danger"></span>
-    </div>
-
-    <div class="form-check mb-3 text-start">
-        <input asp-for="Input.RememberMe" class="form-check-input" />
-        <label asp-for="Input.RememberMe" class="form-check-label"></label>
-    </div>
-
-    <button type="submit" class="btn btn-success w-100">
-        Login
-    </button>
-
-    <div class="text-center mt-3">
-        <a asp-page="./ForgotPassword">Forgot your password?</a><br />
-        <a asp-page="./Register">Create a new account</a>
-    </div>
-
-</form>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -3,29 +3,46 @@
 
 <h2>Create Exam</h2>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
 
-    <div class="mb-3">
-        <label asp-for="Exam.ExamTitle"></label>
+    <!-- Only show model-level errors -->
+    @if (ViewData.ModelState.Keys.Any(k => !k.Contains(".")))
+    {
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    }
+
+    <div class="form-group mb-3">
+        <label asp-for="Exam.ExamTitle" class="form-label">Exam Title</label>
         <input asp-for="Exam.ExamTitle" class="form-control" />
+        <span asp-validation-for="Exam.ExamTitle" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Exam.ExamDate"></label>
+    <div class="form-group mb-3">
+        <label asp-for="Exam.ExamDate" class="form-label">Exam Date</label>
         <input asp-for="Exam.ExamDate" type="date" class="form-control" />
+        <span asp-validation-for="Exam.ExamDate" class="text-danger"></span>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="Exam.CourseId"></label>
+    <div class="form-group mb-3">
+        <label asp-for="Exam.CourseId" class="form-label">Course</label>
         <select asp-for="Exam.CourseId" class="form-control">
-            <option value="">-- Select Course --</option>
+            <option value="">-- Select a Course --</option>
             @foreach (var course in Model.Courses)
             {
-                <option value="@course.CourseId">@course.CourseName</option>
+                <option value="@course.CourseId" selected="@(Model.Exam.CourseId == course.CourseId ? "selected" : null)">
+                    @course.CourseName
+                </option>
             }
         </select>
+        <span asp-validation-for="Exam.CourseId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="UploadFile" class="form-label">Upload Exam File (Optional)</label>
+        <input asp-for="UploadFile" type="file" class="form-control" />
     </div>
 
     <button type="submit" class="btn btn-success">Save Exam</button>
+    <a href="@Url.Page("Index")" class="btn btn-secondary">Cancel</a>
 </form>

@@ -1,0 +1,54 @@
+﻿@page
+@model USALExamManagementSystem.Web.Pages.Doctor.DashboardModel
+@{
+    ViewData["Title"] = "Doctor Dashboard";
+}
+
+<h2>Doctor Dashboard</h2>
+
+<hr />
+
+<h4>Your Courses</h4>
+
+@if (!Model.Courses.Any())
+{
+    <p class="text-muted">No courses assigned to your major.</p>
+}
+else
+{
+    <ul class="list-group mb-4">
+        @foreach (var c in Model.Courses)
+        {
+            <li class="list-group-item">@c.CourseName</li>
+        }
+    </ul>
+}
+
+<h4>Your Exams</h4>
+
+@if (!Model.Exams.Any())
+{
+    <p class="text-muted">No exams created yet.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Date</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var e in Model.Exams)
+            {
+                <tr>
+                    <td>@e.ExamTitle</td>
+                    <td>@e.ExamDate</td>
+                    <td>@e.Course.CourseName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

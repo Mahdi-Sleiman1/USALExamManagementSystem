@@ -1,0 +1,35 @@
+﻿@page "{id:int}"
+@model USALExamManagementSystem.Web.Pages.Exams.DetailsModel
+
+<h2 class="mb-4">Exam Details</h2>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Exam.ExamTitle</h5>
+
+        <p class="card-text">
+            <strong>Course:</strong> @Model.Exam.Course.CourseName <br />
+            <strong>Major:</strong> @Model.Exam.Course.Major.MajorName <br />
+            <strong>Date:</strong> @Model.Exam.ExamDate.ToString("yyyy-MM-dd")
+        </p>
+
+        @if (!string.IsNullOrEmpty(Model.Exam.FilePath))
+        {
+            <a href="@Model.Exam.FilePath"
+               class="btn btn-primary"
+               target="_blank">
+                Download Exam File
+            </a>
+        }
+        else
+        {
+            <p class="text-muted">No file attached.</p>
+        }
+
+        <hr />
+
+        <a asp-page="Index" class="btn btn-secondary">
+            Back to Exams
+        </a>
+    </div>
+</div>
