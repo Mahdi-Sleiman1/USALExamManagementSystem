@@ -20,6 +20,7 @@ A web-based exam management system developed using ASP.NET Core and Entity Frame
 - Entity Framework Core
 - SQL Server
 - Bootstrap
+- Rest API
 
 ## Project Status
 🚧 In progress – under active development  
